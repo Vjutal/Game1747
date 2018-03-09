@@ -173,7 +173,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1
@@ -182,7 +182,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.4590719
+      - time: 0.4662
         functionName: Hit
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -193,7 +193,7 @@ ModelImporter:
       - path: 
         weight: 1
       - path: Exporter
-        weight: 0
+        weight: 1
       - path: Motion
         weight: 1
       - path: Motion/B_Pelvis

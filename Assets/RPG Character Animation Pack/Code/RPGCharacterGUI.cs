@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Runtime.InteropServices;
+using RPGCharacterAnims;
 
 public class RPGCharacterGUI : MonoBehaviour{
-	RPGCharacterControllerFREE rpgCharacter;
+    RPGCharacterController rpgCharacter;
 	bool useNav;
 	bool navToggle;
 
 	void Start(){
-		rpgCharacter = GetComponent<RPGCharacterControllerFREE>();
+		rpgCharacter = GetComponent<RPGCharacterController>();
 	}
 
 	void OnGUI(){
 		if(!rpgCharacter.isDead){
-			if(rpgCharacter.canAction && !rpgCharacter.isRelax && !rpgCharacter.useNavMesh){
+			if(rpgCharacter.canAction && rpgCharacter.weapon == Weapon.RELAX && !rpgCharacter.useMeshNav){
 				if(rpgCharacter.isGrounded){
 					if(GUI.Button(new Rect(25, 15, 100, 30), "Roll Forward")){
 						rpgCharacter.targetDashDirection = transform.forward;
@@ -68,7 +69,7 @@ public class RPGCharacterGUI : MonoBehaviour{
 					}
 				}
 				if(rpgCharacter.isGrounded){
-					if(GUI.Button(new Rect(30, 270, 100, 30), "Death")){
+					if(GUI.Button(new Rect(30, 270, 100, 30), Input.GetAxisRaw("Horizontal").ToString())){ // Death
 						StartCoroutine(rpgCharacter._Death());
 					}
 				}
@@ -79,13 +80,13 @@ public class RPGCharacterGUI : MonoBehaviour{
 			{
 				if(navToggle == false)
 				{
-					rpgCharacter.useNavMesh = true;
+					rpgCharacter.useMeshNav = true;
 					navToggle = true;
 				}
 			}
 			else
 			{
-				rpgCharacter.useNavMesh = false;
+				rpgCharacter.useMeshNav = false;
 				navToggle = false;
 			}
 		}
